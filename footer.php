@@ -87,12 +87,12 @@ $viber = get_field('viber_link', 'option');
 						<p class="mb-md-0">
 							На нашем сайте используются cookie-файлы, в том числе сервисов
 							веб-аналитики. Используя сайт, вы соглашаетесь на <a
-								href="https://domofon62.ru/docs/Consent-to-the-processing-of-personal-data.pdf"
+								href="<?= get_template_directory_uri(); ?>/docs/Consent-to-the-processing-of-personal-data.pdf"
 								target="blank"
 								>обработку персональных данных</a
 							> при помощи cookie-файлов. Подробнее об обработке персональных данных
 							вы можете узнать в <a
-								href="https://domofon62.ru/docs/Privacy-Policy.pdf"
+								href="<?= get_template_directory_uri(); ?>/docs/Privacy-Policy.pdf"
 								target="blank"
 								>Политике конфиденциальности.</a
 							>
