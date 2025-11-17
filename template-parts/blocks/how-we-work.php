@@ -68,14 +68,14 @@ $default_steps = [
 
                 <!-- Кнопка-призыв -->
                 <div class="cta-wrapper text-lg-start text-center">
-                    <button type="button" class="btn btn-primary btn-sm modal-btn mb-3 mb-sm-0" data-bs-toggle="modal"
+                    <!-- <button type="button" class="btn btn-primary btn-sm modal-btn mb-3 mb-sm-0" data-bs-toggle="modal"
                         data-bs-target="#contactModalOneTime">
                         Разовый вызов мастера
-                    </button>
+                    </button> -->
 
                     <button type="button" class="btn btn-primary btn-sm modal-btn" data-bs-toggle="modal"
                         data-bs-target="#contactModalYear">
-                        Годовое обслуживание
+                        Заявка на обслуживание
                     </button>
                 </div>
             </div>
