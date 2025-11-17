@@ -2598,6 +2598,10 @@ h3,
 	width: 100%;
 }
 
+.contact-form-section .contact-form span.wpcf7-form-control-wrap {
+    width: auto;
+}
+
 .contact-form-section .contact-form .row {
 	margin-left: 0;
 	margin-right: 0;
