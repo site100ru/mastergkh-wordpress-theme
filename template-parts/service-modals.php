@@ -15,7 +15,7 @@
       <!-- Заголовок -->
       <div class="modal-header border-0">
         <h5 class="modal-title text-center text-lg-start" id="oneTimeServiceModalLabel">
-          Заявка на разовую услугу
+          Заявка на услугу
         </h5>
       </div>
       <!-- Тело модального окна -->
