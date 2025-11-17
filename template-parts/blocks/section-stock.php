@@ -89,7 +89,7 @@ $annual_services = array_filter($page_services, function($service) {
 				</div>
 				<?php else: ?>
 				<div class="col-12">
-					<p class="text-muted">Годовые услуги не найдены. Настройте услуги в админке.</p>
+					<p class="text-muted">Услуги не найдены. Настройте услуги в админке.</p>
 					<p><small><a href="<?php echo admin_url('edit.php?post_type=services'); ?>">Перейти к управлению услугами</a></small></p>
 				</div>
 				<?php endif; ?>

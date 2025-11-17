@@ -733,7 +733,7 @@ add_filter('wpcf7_form_elements', function ($content) {
 			if ($has_annual) {
 				$checkboxes_html .= '<div class="form-check">';
 				$checkboxes_html .= '<input class="form-check-input service-category-toggle" type="checkbox" name="service_categories[]" value="annual" id="category_annual" data-category="annual">';
-				$checkboxes_html .= '<label class="form-check-label" for="category_annual">Годовые услуги</label>';
+				$checkboxes_html .= '<label class="form-check-label" for="category_annual">Услуги</label>';
 				$checkboxes_html .= '</div>';
 			}
 
@@ -754,10 +754,10 @@ add_filter('wpcf7_form_elements', function ($content) {
 				$checkboxes_html .= '</div>';
 			}
 
-			// Годовые услуги
+			// Услуги
 			if ($has_annual) {
 				$checkboxes_html .= '<div class="services-group" id="annual_services" style="display: none;">';
-				$checkboxes_html .= '<h6 class="mb-3">Годовые услуги:</h6>';
+				$checkboxes_html .= '<h6 class="mb-3">Услуги:</h6>';
 				foreach ($services['annual'] as $service) {
 					$checkboxes_html .= '<div class="form-check">';
 					$checkboxes_html .= '<input class="form-check-input service-checkbox" type="checkbox" name="services[]" value="' . esc_attr($service['title']) . '" id="service_' . esc_attr($service['id']) . '" data-category="annual">';
@@ -944,7 +944,7 @@ add_action('wp_footer', function () {
 					contentId: 'annualServicesDropdownContent',
 					displayId: 'selectedAnnualServicesDisplay',
 					listId: 'selectedAnnualServicesList',
-					defaultText: 'Выберите годовые услуги',
+					defaultText: 'Выберите услуги',
 					tagClass: 'annual-tag'
 				});
 			}, 100);
@@ -989,7 +989,7 @@ add_action('wpcf7_before_send_mail', function ($contact_form) {
 		$categories_list = '';
 		if (isset($posted_data['service_categories']) && is_array($posted_data['service_categories'])) {
 			$category_names = array_map(function ($cat) {
-				return $cat === 'one_time' ? 'Разовые услуги' : 'Годовые услуги';
+				return $cat === 'one_time' ? 'Разовые услуги' : 'Услуги';
 			}, $posted_data['service_categories']);
 			$categories_list = implode(', ', $category_names);
 		}
@@ -1251,7 +1251,7 @@ add_filter('wpcf7_form_elements', function ($content) {
 			// Кнопка для раскрытия списка услуг с другими цветами для годовых
 			$checkboxes_html .= '<div class="services-dropdown-container annual-services" data-form-id="' . $unique_id . '">';
 			$checkboxes_html .= '<button type="button" class="services-dropdown-toggle btn btn-outline-success w-100 text-start" data-target="annualServicesDropdownContent_' . $unique_id . '">';
-			$checkboxes_html .= '<span class="dropdown-text">Выберите годовые услуги</span>';
+			$checkboxes_html .= '<span class="dropdown-text">Выберите услуги</span>';
 			$checkboxes_html .= '<span class="dropdown-icon"><img src="/wp-content/themes/newtheme/asset/img/arrow-bottom.svg" alt=""></span>';
 			$checkboxes_html .= '</button>';
 
@@ -1275,13 +1275,13 @@ add_filter('wpcf7_form_elements', function ($content) {
 
 			// Контейнер для отображения выбранных услуг
 			$checkboxes_html .= '<div class="selected-services-display annual-selected" id="selectedAnnualServicesDisplay_' . $unique_id . '" style="display: none;">';
-			$checkboxes_html .= '<h6>Выбранные годовые услуги:</h6>';
+			$checkboxes_html .= '<h6>Выбранные услуги:</h6>';
 			$checkboxes_html .= '<div class="selected-services-list" id="selectedAnnualServicesList_' . $unique_id . '"></div>';
 			$checkboxes_html .= '</div>';
 
 		} else {
 			$checkboxes_html = '<div class="alert alert-warning">';
-			$checkboxes_html .= '<p>Годовые услуги не найдены.</p>';
+			$checkboxes_html .= '<p>Услуги не найдены.</p>';
 			$checkboxes_html .= '<small>Проверьте:</small>';
 			$checkboxes_html .= '<ul>';
 			$checkboxes_html .= '<li>Есть ли услуги с категорией "Годовая услуга"</li>';
@@ -1383,7 +1383,7 @@ add_action('wp_footer', function () {
 					} else {
 						if (selectedDisplay) selectedDisplay.style.display = 'none';
 						if (container.classList.contains('annual-services')) {
-							dropdownText.textContent = 'Выберите годовые услуги';
+							dropdownText.textContent = 'Выберите услуги';
 						} else {
 							dropdownText.textContent = 'Выберите услуги';
 						}
@@ -1409,7 +1409,7 @@ add_action('wp_footer', function () {
 							dropdownText.textContent = `Выбрано услуг: ${selectedCount}`;
 						} else {
 							if (container.classList.contains('annual-services')) {
-								dropdownText.textContent = 'Выберите годовые услуги';
+								dropdownText.textContent = 'Выберите услуги';
 							} else {
 								dropdownText.textContent = 'Выберите услуги';
 							}
