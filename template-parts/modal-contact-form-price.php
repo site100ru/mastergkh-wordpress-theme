@@ -25,7 +25,7 @@
             <!-- Заголовок -->
             <div class="modal-header border-0">
                 <h5 class="modal-title text-center text-lg-start" id="contactModalLabel">
-                    Отправить сообщение
+                    Оставить заявку
                 </h5>
             </div>
 
