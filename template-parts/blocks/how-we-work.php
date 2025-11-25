@@ -75,7 +75,7 @@ $default_steps = [
 
                     <button type="button" class="btn btn-primary btn-sm modal-btn" data-bs-toggle="modal"
                         data-bs-target="#contactModalYear">
-                        Заявка на обслуживание
+                        Заключить договор
                     </button>
                 </div>
             </div>

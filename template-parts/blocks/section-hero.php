@@ -48,12 +48,12 @@ $custom_title = get_field('section_hero_custom_title') ?: 'комфортное 
             <div class="d-flex section-hero__toach">
               <p class="toach">•</p>
               <p class="section-hero__toach-text">
-                Здесь Вы можете оставить заявку на гарантийное обслуживание по договору
+                Здесь Вы можете оставить заявку на гарантийное обслуживание по договору
               </p>
             </div>
 
             <button type="button" class="btn" data-bs-toggle="modal" data-bs-target="#contactModal">
-              Отправить заявку
+              Заявка на ремонт
             </button>
           </div>
         </div>

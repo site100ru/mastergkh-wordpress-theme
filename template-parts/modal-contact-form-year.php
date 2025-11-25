@@ -25,7 +25,7 @@
             <!-- Заголовок -->
             <div class="modal-header border-0">
                 <h5 class="modal-title text-center text-lg-start" id="contactModalLabel">
-                    Заявка на обслуживание
+                    Заключить договор
                 </h5>
             </div>
 

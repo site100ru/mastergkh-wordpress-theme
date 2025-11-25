@@ -57,7 +57,7 @@ $annual_services = array_filter($page_services, function($service) {
 
 						<p class="price">0 р</p>
 						<button type="button" class="btn btn-primary disabled" data-bs-toggle="modal" data-bs-target="#contactModalPrice" disabled>
-							Оставить заявку
+							Заключить договор
 						</button>
 					</div>
 				</div>
@@ -101,7 +101,7 @@ $annual_services = array_filter($page_services, function($service) {
 
 				<p class="price">0 р</p>
 				<button type="button" class="btn btn-primary disabled" data-bs-toggle="modal" data-bs-target="#contactModalPrice" disabled>
-					Оставить заявку
+					Заключить договор
 				</button>
 			</div>
 
