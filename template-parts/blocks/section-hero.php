@@ -52,7 +52,7 @@ $custom_title = get_field('section_hero_custom_title') ?: 'комфортное 
               </p>
             </div>
 
-            <button type="button" class="btn" data-bs-toggle="modal" data-bs-target="#contactModal">
+            <button type="button" class="btn" data-bs-toggle="modal" data-bs-target="#heroContactModal">
               Заявка на ремонт
             </button>
           </div>
