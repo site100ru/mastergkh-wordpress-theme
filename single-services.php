@@ -68,16 +68,18 @@ get_header();
                                     <?php echo $service['details']['description']; ?>
                                 </div>
 
-                                <p>Стоимость:</p>
+                                <?php if (!empty($service['details']['price_group']['price'])): ?>
+                                    <p>Стоимость:</p>
 
-                                <div class="d-flex price">
-                                    <p class="fw-semibold text-primary">
-                                        <?php echo esc_html($service['details']['price_group']['price']); ?> р.</p>
-                                    <?php if (!empty($service['details']['price_group']['old_price'])): ?>
-                                        <p class="text-muted text-decoration-line-through">
-                                            <?php echo esc_html($service['details']['price_group']['old_price']); ?> р.</p>
-                                    <?php endif; ?>
-                                </div>
+                                    <div class="d-flex price">
+                                        <p class="fw-semibold text-primary">
+                                            <?php echo esc_html($service['details']['price_group']['price']); ?> р.</p>
+                                        <?php if (!empty($service['details']['price_group']['old_price'])): ?>
+                                            <p class="text-muted text-decoration-line-through">
+                                                <?php echo esc_html($service['details']['price_group']['old_price']); ?> р.</p>
+                                        <?php endif; ?>
+                                    </div>
+                                <?php endif; ?>
 
                                 <button type="button" class="btn btn-primary service-order-btn" data-bs-toggle="modal"
                                     data-bs-target="<?php echo $modal_target; ?>"
