@@ -85,7 +85,7 @@ get_header();
                                     data-bs-target="<?php echo $modal_target; ?>"
                                     data-service-title="<?php echo esc_attr($service['details']['title']); ?>"
                                     data-service-category="<?php echo esc_attr($service_category); ?>">
-                                    Оставить заявку
+                                    Заключить договор
                                 </button>
                             </div>
                         </div>
@@ -140,7 +140,7 @@ get_header();
                             data-bs-target="<?php echo $modal_target; ?>"
                             data-service-title="<?php echo esc_attr(get_the_title()); ?>"
                             data-service-category="<?php echo esc_attr($service_category); ?>">
-                            Оставить заявку
+                            Заключить договор
                         </button>
                     </div>
                 </div>
