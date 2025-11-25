@@ -46,7 +46,7 @@ $annual_services = array_filter($page_services, function($service) {
 					<h2 class="mb-0">Акция 1 + 1 = 3</h2>
 
 					<h3 class="text-center text-lg-start">
-						Выбери 2 услуги на годовое обслуживание, получи третью <span>бесплатно!</span>
+						Выбери 2 услуги на годовое обслуживание <span>по тарифу Оптимальный</span>, получи третью <span>бесплатно!</span>
 					</h3>
 
 					<p class="mb-3 mb-lg-0">Срок действия акции ограничен!</p>
@@ -57,7 +57,7 @@ $annual_services = array_filter($page_services, function($service) {
 
 						<p class="price">0 р</p>
 						<button type="button" class="btn btn-primary disabled" data-bs-toggle="modal" data-bs-target="#contactModalPrice" disabled>
-							Заключить договор
+							Оставить заявку
 						</button>
 					</div>
 				</div>
@@ -101,7 +101,7 @@ $annual_services = array_filter($page_services, function($service) {
 
 				<p class="price">0 р</p>
 				<button type="button" class="btn btn-primary disabled" data-bs-toggle="modal" data-bs-target="#contactModalPrice" disabled>
-					Заключить договор
+					Оставить заявку
 				</button>
 			</div>
 
