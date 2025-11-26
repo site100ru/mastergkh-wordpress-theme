@@ -21,7 +21,6 @@
       <!-- Тело модального окна -->
       <div class="modal-body">
         <?php
-        // Форма для разовых услуг - замените ID на реальный
         echo do_shortcode('[contact-form-7 id="a44fd50" title="Разовая услуга (для страницы услуг)"]');
         ?>
 
@@ -47,7 +46,7 @@
       <!-- Заголовок -->
       <div class="modal-header border-0">
         <h5 class="modal-title text-center text-lg-start" id="annualServiceModalLabel">
-          Заявка на годовую услугу
+          Заявка на услугу
         </h5>
       </div>
       <!-- Тело модального окна -->
