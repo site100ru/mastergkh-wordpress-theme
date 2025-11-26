@@ -4518,3 +4518,12 @@ h3,
 	padding: 10px 30px;
 	color: #fff;
 }
+
+.animate__fadeInUp,
+.animate__fadeInBottomLeft,
+.animate__fadeInBottomRight,
+.animate__zoomIn,
+.animate__fadeInLeft,
+.animate__fadeIn {
+    visibility: hidden;
+}
