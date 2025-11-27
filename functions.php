@@ -1323,7 +1323,7 @@ add_filter('wpcf7_form_elements', function ($content) {
 			$checkboxes_html .= '<input type="hidden" name="tariff_type" value="annual">';
 
 			// Кнопка для раскрытия списка тарифов
-			$checkboxes_html .= '<div class="services-dropdown-container" data-form-id="' . $unique_id . '">';
+			$checkboxes_html .= '<div class="services-dropdown-container annual-services" data-form-id="' . $unique_id . '">';
 			$checkboxes_html .= '<button type="button" class="services-dropdown-toggle btn btn-outline-success w-100 text-start" data-target="annualTariffsDropdownContent_' . $unique_id . '">';
 			$checkboxes_html .= '<span class="dropdown-text">Выберите тариф</span>';
 			$checkboxes_html .= '<span class="dropdown-icon"><img src="/wp-content/themes/newtheme/asset/img/arrow-bottom.svg" alt=""></span>';
