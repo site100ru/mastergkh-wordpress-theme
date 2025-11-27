@@ -1477,7 +1477,7 @@ add_action('wp_footer', function () {
 							if (container.classList.contains('annual-services')) {
 								dropdownText.textContent = 'Выберите услуги';
 							} else {
-								dropdownText.textContent = 'Выберите услуги';
+								dropdownText.textContent = 'Выберите тариф';
 							}
 						}
 						updateSelectedDisplay();
