@@ -84,67 +84,138 @@ $viber = get_field('viber_link', 'option');
 <?php wp_footer(); ?>
 
 <!-- Всплывающая форма Политики конфиденциальности -->
-		<div class="popup-form py-3" id="popupForm">
-			<div class="form-content container">
-				<div class="row justify-content-center align-items-center">
-					<div class="col-md-9">
-						<p class="mb-md-0">
-							На нашем сайте используются cookie-файлы, в том числе сервисов
-							веб-аналитики. Используя сайт, вы соглашаетесь на <a
-								href="<?= get_template_directory_uri(); ?>/docs/Consent-to-the-processing-of-personal-data.pdf"
-								target="blank"
-								>обработку персональных данных</a
-							> при помощи cookie-файлов. Подробнее об обработке персональных данных
-							вы можете узнать в <a
-								href="<?= get_template_directory_uri(); ?>/docs/Privacy-Policy.pdf"
-								target="blank"
-								>Политике конфиденциальности.</a
-							>
-						</p>
-					</div>
-					<div class="col-md-3 text-md-center">
-						<button id="closeBtn" class="btn action-btn">Понятно</button>
-					</div>
-				</div>
-			</div>
-		</div>
-		<script>
-			document.addEventListener('DOMContentLoaded', function () {
-				const popupForm = document.getElementById('popupForm');
-				const closeBtn = document.getElementById('closeBtn');
+<div class="popup-form py-3" id="popupForm">
+    <div class="form-content container">
+        <div class="row justify-content-center align-items-center">
+            <div class="col-md-9">
+                <p class="mb-md-0">
+                    На нашем сайте используются cookie-файлы, в том числе сервисов
+                    веб-аналитики. Используя сайт, вы соглашаетесь на <a
+                        href="<?= get_template_directory_uri(); ?>/docs/Consent-to-the-processing-of-personal-data.pdf"
+                        target="blank"
+                        >обработку персональных данных</a
+                    > при помощи cookie-файлов. Подробнее об обработке персональных данных
+                    вы можете узнать в <a
+                        href="<?= get_template_directory_uri(); ?>/docs/Privacy-Policy.pdf"
+                        target="blank"
+                        >Политике конфиденциальности.</a
+                    >
+                </p>
+            </div>
+            <div class="col-md-3 text-md-center">
+                <button id="closeBtn" class="btn action-btn">Понятно</button>
+            </div>
+        </div>
+    </div>
+</div>
+<script>
+    document.addEventListener('DOMContentLoaded', function () {
+        const popupForm = document.getElementById('popupForm');
+        const closeBtn = document.getElementById('closeBtn');
 
-				// Проверяем нужно ли показывать форму
-				function shouldShowPopup() {
-					const lastClosed = localStorage.getItem('popupLastClosed');
+        // Проверяем нужно ли показывать форму
+        function shouldShowPopup() {
+            const lastClosed = localStorage.getItem('popupLastClosed');
 
-					// Если пользователь никогда не закрывал форму
-					if (!lastClosed) return true;
+            // Если пользователь никогда не закрывал форму
+            if (!lastClosed) return true;
 
-					// Если прошло более 1 часа (3600000 миллисекунд) с последнего закрытия
-					const now = new Date().getTime();
-					return now - parseInt(lastClosed) > 3600000;
-				}
+            // Если прошло более 1 часа (3600000 миллисекунд) с последнего закрытия
+            const now = new Date().getTime();
+            return now - parseInt(lastClosed) > 3600000;
+        }
 
-				// Показываем форму если нужно
-				if (shouldShowPopup()) {
-					setTimeout(() => {
-						popupForm.classList.add('active');
-					}, 3000);
-				}
+        // Показываем форму если нужно
+        if (shouldShowPopup()) {
+            setTimeout(() => {
+                popupForm.classList.add('active');
+            }, 3000);
+        }
 
-				// Функция закрытия формы
-				function closePopup() {
-					popupForm.classList.remove('active');
+        // Функция закрытия формы
+        function closePopup() {
+            popupForm.classList.remove('active');
 
-					// Сохраняем время закрытия
-					localStorage.setItem('popupLastClosed', new Date().getTime().toString());
-				}
+            // Сохраняем время закрытия
+            localStorage.setItem('popupLastClosed', new Date().getTime().toString());
+        }
 
-				// Закрытие по кнопке
-				closeBtn.addEventListener('click', closePopup);
-			});
-		</script>
-		<!-- /Всплывающая форма Политики конфиденциальности -->
+        // Закрытие по кнопке
+        closeBtn.addEventListener('click', closePopup);
+    });
+</script>
+<!-- /Всплывающая форма Политики конфиденциальности -->
+
+<script>
+/**
+ * Обработка тарифов и услуг
+ */
+document.addEventListener('DOMContentLoaded', function() {
+    
+    // Раскрытие/закрытие списка
+    document.querySelectorAll('.services-dropdown-toggle').forEach(button => {
+        button.addEventListener('click', function() {
+            const dropdown = document.getElementById(this.dataset.target);
+            const icon = this.querySelector('.dropdown-icon img');
+            const isOpen = dropdown.style.display === 'block';
+            
+            dropdown.style.display = isOpen ? 'none' : 'block';
+            icon.style.transform = isOpen ? 'rotate(0deg)' : 'rotate(180deg)';
+            this.classList.toggle('active');
+        });
+    });
+
+    // Обработка выбора
+    document.querySelectorAll('.annual-service-checkbox').forEach(checkbox => {
+        checkbox.addEventListener('change', function() {
+            const container = this.closest('[data-form-id]');
+            const formId = container.dataset.formId;
+            const isTariff = this.name === 'tariffs[]';
+            
+            // Для тарифов - только один выбор
+            if (isTariff && this.checked) {
+                container.querySelectorAll('input[name="tariffs[]"]').forEach(cb => {
+                    if (cb !== this) cb.checked = false;
+                });
+            }
+            
+            // Обновляем отображение
+            updateDisplay(formId, isTariff);
+        });
+    });
+
+    // Обновление выбранных элементов
+    function updateDisplay(formId, isTariff) {
+        const type = isTariff ? 'Tariffs' : 'Services';
+        const display = document.getElementById(`selectedAnnual${type}Display_${formId}`);
+        const list = document.getElementById(`selectedAnnual${type}List_${formId}`);
+        const checked = document.querySelectorAll(`[data-form-id="${formId}"] input[name="${isTariff ? 'tariffs' : 'services'}[]"]:checked`);
+        
+        if (checked.length > 0) {
+            display.style.display = 'block';
+            list.innerHTML = Array.from(checked).map(cb => 
+                `<span>${cb.value}</span>`
+            ).join('');
+        } else {
+            display.style.display = 'none';
+        }
+    }
+
+    // Закрытие при клике вне
+    document.addEventListener('click', e => {
+        if (!e.target.closest('.services-dropdown-container')) {
+            document.querySelectorAll('.services-dropdown-content').forEach(dropdown => {
+                dropdown.style.display = 'none';
+                const button = document.querySelector(`[data-target="${dropdown.id}"]`);
+                if (button) {
+                    button.classList.remove('active');
+                    button.querySelector('.dropdown-icon img').style.transform = 'rotate(0deg)';
+                }
+            });
+        }
+    });
+});
+</script>
 </body>
 
 </html>

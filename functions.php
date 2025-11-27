@@ -1299,6 +1299,72 @@ add_filter('wpcf7_form_elements', function ($content) {
 });
 
 /**
+ * Генерация чекбоксов тарифов для формы годовых услуг 
+ */
+add_filter('wpcf7_form_elements', function ($content) {
+	// Заменяем плейсхолдер для тарифов
+	if (strpos($content, '[annual_tariffs_checkboxes') !== false) {
+		// Генерируем уникальный ID для каждой формы
+		static $tariff_form_counter = 0;
+		$tariff_form_counter++;
+		$unique_id = 'tariff_form_' . $tariff_form_counter;
+
+		// Определяем тарифы
+		$tariffs = array(
+			array('id' => 1, 'title' => 'Тариф «Простой» - 3 000 р.'),
+			array('id' => 2, 'title' => 'Тариф «Оптимальный» - 5 000 р'),
+			array('id' => 3, 'title' => 'Тариф «Максимальный» - 10 000 р.')
+		);
+
+		$checkboxes_html = '';
+
+		if (!empty($tariffs)) {
+			// Скрытое поле с типом (тарифы)
+			$checkboxes_html .= '<input type="hidden" name="tariff_type" value="annual">';
+
+			// Кнопка для раскрытия списка тарифов
+			$checkboxes_html .= '<div class="services-dropdown-container" data-form-id="' . $unique_id . '">';
+			$checkboxes_html .= '<button type="button" class="services-dropdown-toggle btn btn-outline-success w-100 text-start" data-target="annualTariffsDropdownContent_' . $unique_id . '">';
+			$checkboxes_html .= '<span class="dropdown-text">Выберите тариф</span>';
+			$checkboxes_html .= '<span class="dropdown-icon"><img src="/wp-content/themes/newtheme/asset/img/arrow-bottom.svg" alt=""></span>';
+			$checkboxes_html .= '</button>';
+
+			// Контейнер с тарифами (изначально скрыт)
+			$checkboxes_html .= '<div class="services-dropdown-content annual-content" id="annualTariffsDropdownContent_' . $unique_id . '" style="display: none;">';
+			$checkboxes_html .= '<div class="services-list">';
+
+			foreach ($tariffs as $tariff) {
+				$checkbox_id = 'annual_tariff_' . $unique_id . '_' . $tariff['id'];
+				$checkboxes_html .= '<div class="form-check service-option">';
+				$checkboxes_html .= '<input class="form-check-input annual-service-checkbox" type="checkbox" name="tariffs[]" value="' . esc_attr($tariff['title']) . '" id="' . $checkbox_id . '">';
+				$checkboxes_html .= '<label class="form-check-label" for="' . $checkbox_id . '">';
+				$checkboxes_html .= esc_html($tariff['title']);
+				$checkboxes_html .= '</label>';
+				$checkboxes_html .= '</div>';
+			}
+
+			$checkboxes_html .= '</div>';
+			$checkboxes_html .= '</div>';
+			$checkboxes_html .= '</div>';
+
+			// Контейнер для отображения выбранных тарифов
+			$checkboxes_html .= '<div class="selected-services-display annual-selected" id="selectedAnnualTariffsDisplay_' . $unique_id . '" style="display: none;">';
+			$checkboxes_html .= '<h6>Выбранные тарифы:</h6>';
+			$checkboxes_html .= '<div class="selected-services-list" id="selectedAnnualTariffsList_' . $unique_id . '"></div>';
+			$checkboxes_html .= '</div>';
+
+		}
+
+		// Заменяем шорткод на HTML
+		$content = preg_replace('/\[annual_tariffs_checkboxes[^\]]*\]/', $checkboxes_html, $content);
+	}
+
+	return $content;
+});
+
+
+
+/**
  * JavaScript для управления выпадающими списками (разовые и годовые услуги)
  */
 add_action('wp_footer', function () {
@@ -1385,7 +1451,7 @@ add_action('wp_footer', function () {
 						if (container.classList.contains('annual-services')) {
 							dropdownText.textContent = 'Выберите услуги';
 						} else {
-							dropdownText.textContent = 'Выберите услуги';
+							dropdownText.textContent = 'Выберите тариф';
 						}
 					}
 				}
