@@ -1311,9 +1311,9 @@ add_filter('wpcf7_form_elements', function ($content) {
 
 		// Определяем тарифы
 		$tariffs = array(
-			array('id' => 1, 'title' => 'Тариф «Простой» - 3 000 р.'),
-			array('id' => 2, 'title' => 'Тариф «Оптимальный» - 5 000 р'),
-			array('id' => 3, 'title' => 'Тариф «Максимальный» - 10 000 р.')
+			array('id' => 1, 'title' => 'Тариф «Простой»'),
+			array('id' => 2, 'title' => 'Тариф «Оптимальный»'),
+			array('id' => 3, 'title' => 'Тариф «Максимальный»')
 		);
 
 		$checkboxes_html = '';
