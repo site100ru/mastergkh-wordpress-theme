@@ -295,6 +295,18 @@ document.addEventListener('DOMContentLoaded', function () {
 });
 </script>
 
+<?php
+if ( ! is_single() ) {
+    echo '<style>
+        .selected-services-list {
+            height: 50px !important;
+        }
+    </style>';
+}
+?>
+</body>
+
+
 </body>
 
 </html>
