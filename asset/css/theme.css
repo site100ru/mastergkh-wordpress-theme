@@ -4465,6 +4465,7 @@ h3,
     background-color: rgba(237, 237, 237, 1);
     border-radius: 8px;
     border-left: 4px solid rgb(149, 201, 90);
+    height: 50px;
 }
 
 .selected-services-list .service-item,
