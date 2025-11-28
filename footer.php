@@ -77,6 +77,7 @@ $viber = get_field('viber_link', 'option');
 <?php get_template_part('template-parts/modal-contact-form'); ?>
 <?php get_template_part('template-parts/modal-contact-form-hero-section'); ?>
 <?php get_template_part('template-parts/modal-contact-form-one-time'); ?>
+<?php get_template_part('template-parts/modal-contact-form-how-we-work'); ?>
 <?php get_template_part('template-parts/modal-contact-form-year'); ?>
 <?php get_template_part('template-parts/modal-contact-form-price'); ?>
 
