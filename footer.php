@@ -216,6 +216,84 @@ document.addEventListener('DOMContentLoaded', function() {
     });
 });
 </script>
+
+<script>
+document.addEventListener('DOMContentLoaded', function () {
+    let currentOpenDropdown = null;
+
+    console.log('Скрипт загружен');
+    console.log('Найдено кнопок:', document.querySelectorAll('.services-dropdown-toggle').length);
+
+    // Клик по кнопке дропдауна
+    document.addEventListener('click', function(e) {
+        const toggle = e.target.closest('.services-dropdown-toggle');
+        
+        // Пропускаем клики не по дропдаунам
+        if (!toggle) return;
+        
+        e.preventDefault();
+        e.stopPropagation();
+        
+        console.log('=== КЛИК ПО ДРОПДАУНУ ===');
+        
+        const target = toggle.getAttribute('data-target');
+        const content = document.getElementById(target);
+        const icon = toggle.querySelector('.dropdown-icon img');
+        
+        console.log('Target ID:', target);
+        console.log('Content найден:', !!content);
+        
+        // Если кликнули по уже открытому - закрываем его
+        if (currentOpenDropdown === content) {
+            content.style.display = 'none';
+            content.classList.remove('show'); // Добавь эту строку
+            if (icon) icon.style.transform = 'rotate(0deg)';
+            toggle.classList.remove('active');
+            currentOpenDropdown = null;
+            console.log('Закрыли текущий');
+            return;
+        }
+        
+        // Закрываем предыдущий открытый
+        if (currentOpenDropdown) {
+            console.log('Закрываем предыдущий:', currentOpenDropdown.id);
+            currentOpenDropdown.style.display = 'none';
+            currentOpenDropdown.classList.remove('show'); 
+            const prevToggle = document.querySelector(`[data-target="${currentOpenDropdown.id}"]`);
+            if (prevToggle) {
+                prevToggle.classList.remove('active');
+                const prevIcon = prevToggle.querySelector('.dropdown-icon img');
+                if (prevIcon) prevIcon.style.transform = 'rotate(0deg)';
+            }
+        }
+        
+        // Открываем новый
+        console.log('Открываем новый:', target);
+        content.style.display = 'block';
+        content.classList.add('show'); // Добавь эту строку
+        if (icon) icon.style.transform = 'rotate(180deg)';
+        toggle.classList.add('active');
+        currentOpenDropdown = content;
+    });
+
+    // Закрытие при клике вне дропдауна
+    document.addEventListener('click', function(e) {
+        if (!e.target.closest('.services-dropdown-container') && currentOpenDropdown) {
+            console.log('Закрываем по клику вне');
+            currentOpenDropdown.style.display = 'none';
+            currentOpenDropdown.classList.remove('show');
+            const toggle = document.querySelector(`[data-target="${currentOpenDropdown.id}"]`);
+            if (toggle) {
+                toggle.classList.remove('active');
+                const icon = toggle.querySelector('.dropdown-icon img');
+                if (icon) icon.style.transform = 'rotate(0deg)';
+            }
+            currentOpenDropdown = null;
+        }
+    });
+});
+</script>
+
 </body>
 
 </html>
