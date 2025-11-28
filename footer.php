@@ -33,7 +33,7 @@ $viber = get_field('viber_link', 'option');
         <p><a href="<?= get_template_directory_uri(); ?>/docs/Consent-to-the-processing-of-personal-data.pdf" target="blank">Политика конфиденциальности</a></p>
         <p><a href="<?= get_template_directory_uri(); ?>/docs/Privacy-Policy.pdf" target="blank">Обработка персональных данных</a></p>
 
-      <button type="button" class="btn" data-bs-toggle="modal" data-bs-target="#contactModal">
+      <button type="button" class="btn" data-bs-toggle="modal" data-bs-target="#heroContactModal">
         Написать нам
       </button>
     </div>

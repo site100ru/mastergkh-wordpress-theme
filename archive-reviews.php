@@ -67,7 +67,7 @@ get_header();
             type="button"
             class="btn content-page-review-modal"
             data-bs-toggle="modal"
-            data-bs-target="#contactModal"
+            data-bs-target="#heroContactModal"
         >
         Заключить договор
         </button>
